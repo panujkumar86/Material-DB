@@ -89,11 +89,6 @@ def search():
   #      return jsonify(results), 200
  #   except Exception as e:
  #       return jsonify({'error': str(e)}), 500
-# Mathematical filters on numerical fields
-# Mathematical filters on numerical fields
-# Mathematical filters on numerical fields
-# Mathematical filters on numerical fields
-# Mathematical filters on numerical fields
 @app.route('/filter', methods=['GET'])
 def filter_data():
     try:
@@ -129,7 +124,6 @@ def boolean_filter():
 
 
 # Element-based filtering
-# Element-based filtering
 @app.route('/element-filter', methods=['GET'])
 def element_filter():
     try:
@@ -142,9 +136,6 @@ def element_filter():
 
 
 
-# Multi-column sort
-# Multi-column sort
-# Multi-column sort
 # Multi-column sort
 @app.route('/sort', methods=['GET'])
 def sort_data():
@@ -168,10 +159,6 @@ def sort_data():
 def home():
     return render_template('index.html')
     #return 'Welcome to the Materials Database API!'
-
-
-
-
 
 if __name__ == '__main__':
     load_data_from_csv()

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materials Database API Guide</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+        p {
+            color: #555;
+        }
+        code {
+            color: #c7254e;
+            background-color: #f9f2f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #f9f2f4;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<h1>Materials Database API Guide</h1>
+
+<h2>Introduction</h2>
+<p>Welcome to the Materials Database API, designed to manage and analyze material data efficiently.</p>
+
+<h2>Setting Up</h2>
+<p>To set up the API, follow these simple steps:</p>
+<pre><code>1. Clone the repository:
+    <span style="color: #008CBA;">git clone</span> something like this:-> https://github.com/Material-DB/materials-api.git</code></pre>
+<pre><code>2. Install dependencies:
+    <span style="color: #008CBA;">pip install</span> -r requirements.txt</code>
+    <span style="color: #008CBA;">make sure these versions are correct</span>
+    Python 3.10.10
+    Flask 2.0.1
+    Werkzeug 2.0.0
+    </code>
+</pre>
+
+<h2>Running the API</h2>
+<p>To start the API, run the following command:</p>
+<pre><code><span style="color: #008CBA;">python</span> app.py</code></pre>
+<p>Visit <code>http://192.168.1.5:8080</code> in your browser to interact with the API.</p>
+
+<ul>
+    <li><a href="http://192.168.1.5:8080" target="_blank">Home</a></li>
+    <li><a href="http://192.168.1.5:8080/store-data" target="_blank">Store Data</a></li>
+    <li><a href="http://192.168.1.5:8080/search" target="_blank">Search</a></li>
+    <li><a href="http://192.168.1.5:8080/filter" target="_blank">Numerical Filter</a></li>
+    <li><a href="http://192.168.1.5:8080/boolean-filter" target="_blank">Boolean Field Filter</a></li>
+    <li><a href="http://192.168.1.5:8080/element-filter" target="_blank">Element-Based Filtering</a></li>
+    <li><a href="http://192.168.1.5:8080/sort" target="_blank">Multi-Column Sort</a></li>
+</ul>
+
+<h3>The above is just a way to tell you that with front end it will work like above but for now please directly hit the URL in the browser & if we want to test it in the terminal then just do like this</h3>
+
+<p>Examples:</p>
+<ul>
+    <li>To Store new data, you can use this command:</li>
+    <code>curl -X POST -H "Content-Type: application/json" -d '{"nsites": 1, "formula_pretty": "H2O", "volume": 18.01528}' http://192.168.1.5:8080/store-data</code>
+
+    <li>To Search:</li>
+    <code>curl -X GET "http://192.168.1.5:8080/search?query=H2O"</code>
+
+    <li>Element-Based Filtering:</li>
+    <code>curl -X GET "http://192.168.1.5:8080/element-filter?elements=Ti-N"</code>
+
+    <li>Numerical Filter:</li>
+    <code>curl -X GET "http://192.168.1.5:8080/filter?field=volume&operator=>&value=10"</code>
+
+    <li>Multi-Column Sort:</li>
+    <code>curl -X GET "http://192.168.1.5:8080/sort?columns=volume,density&order=asc"</code>
+
+    <li>Boolean Field Filter:</li>
+    <code>curl -X GET "http://192.168.1.5:8080/boolean-filter?field=is_stable&value=true"</code>
+</ul>
+<h2>Objective Details</h2>
+
+<h3>Store and Export Data</h3>
+<p>The API allows storing data using the <code>/store-data</code> endpoint. Data is stored in the MongoDB database.</p>
+
+<h3>String/Sub-String Search on Text Fields</h3>
+<p>Perform string/sub-string searches on text fields using the <code>/search</code> endpoint. Specify the query parameter to search for specific terms.</p>
+
+<h3>Mathematical Filters on Numerical Fields</h3>
+<p>Apply mathematical filters (<, >, =) on numerical fields using the <code>/filter</code> endpoint. Specify the field, operator, and value parameters in the URL.</p>
+
+<h3>Boolean Field Filter</h3>
+<p>Filter data based on boolean fields using the <code>/boolean-filter</code> endpoint. Specify the field and value parameters in the URL.</p>
+
+<h3>Validate Input for the Database</h3>
+<p>The API validates input data to ensure it meets the required format. Errors are returned if validation fails.</p>
+
+<h3>Multi-Column Sort</h3>
+<p>Sort data based on multiple columns using the <code>/sort</code> endpoint. Specify the columns and order parameters in the URL.</p>
+
+<h3>Element-Based Filtering</h3>
+<p>Perform element-based filtering using the <code>/element-filter</code> endpoint. Specify elements in the URL (e.g., <code>Ca-O</code>, <code>Ti-N</code>).</p>
+
+<p>Feel free to explore and interact with the API to meet your material data analysis needs!</p>
+
+</body>
+</html>
